@@ -121,6 +121,18 @@ h1 { font-family:'Syne',sans-serif; font-size:clamp(2.6rem,5.5vw,4.6rem); font-w
 .stat-label { font-size:0.79rem; color:var(--muted); margin-top:0.1rem; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
+/* Scroll reveal */
+.reveal-hidden {
+  opacity: 0 !important;
+  transform: translateY(28px) !important;
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.25s, box-shadow 0.25s !important;
+}
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.25s, box-shadow 0.25s !important;
+}
+
 /* SHARED */
 section { padding:5rem 6%; }
 .section-tag { display:inline-block; font-size:0.73rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; color:var(--accent2); margin-bottom:0.7rem; }
@@ -376,7 +388,7 @@ footer a { color:var(--muted); text-decoration:none; }
       <div class="about-info">
         <div class="info-item"><span class="info-label">Location</span><span class="info-val">Mason, Ohio, USA</span></div>
         <div class="info-item"><span class="info-label">Degree</span><span class="info-val">M.Eng. CS · Univ. of Cincinnati</span></div>
-        <div class="info-item"><span class="info-label">Email</span><span class="info-val"><a href="/cdn-cgi/l/email-protection#47372635222c2f312e232e33757107202a262e2b6924282a"><span class="__cf_email__" data-cfemail="2252435047494a544b464b56101462454f434b4e0c414d4f">[email&#160;protected]</span></a></span></div>
+        <div class="info-item"><span class="info-label">Email</span><span class="info-val"><a href="mailto:parekhvidit26@gmail.com">parekhvidit26@gmail.com</a></span></div>
         <div class="info-item"><span class="info-label">Status</span><span class="info-val" style="color:var(--accent2)">Open to Work ✓</span></div>
       </div>
       <div class="about-chips">
@@ -752,7 +764,7 @@ footer a { color:var(--muted); text-decoration:none; }
       <div class="contact-items">
         <div class="contact-item">
           <div class="c-icon">📧</div>
-          <div><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection#a6d6c7d4c3cdced0cfc2cfd29490e6c1cbc7cfca88c5c9cb"><span class="__cf_email__" data-cfemail="cebeafbcaba5a6b8a7aaa7bafcf88ea9a3afa7a2e0ada1a3">[email&#160;protected]</span></a></div></div>
+          <div><div class="c-label">Email</div><div class="c-val"><a href="mailto:parekhvidit26@gmail.com">parekhvidit26@gmail.com</a></div></div>
         </div>
         <div class="contact-item">
           <div class="c-icon">📍</div>
@@ -767,7 +779,7 @@ footer a { color:var(--muted); text-decoration:none; }
         <a href="https://github.com/Vidit-Parekh" target="_blank" class="social-btn">🐙 GitHub</a>
         <a href="https://www.linkedin.com/in/vidit-parekh26" target="_blank" class="social-btn">💼 LinkedIn</a>
         <a href="https://medium.com/@vidithardikparekh40" target="_blank" class="social-btn">✍️ Medium</a>
-        <a href="/cdn-cgi/l/email-protection#bcccddced9d7d4cad5d8d5c88e8afcdbd1ddd5d092dfd3d1" class="social-btn">📧 Email</a>
+        <a href="mailto:parekhvidit26@gmail.com" class="social-btn">📧 Email</a>
       </div>
     </div>
     <div class="form-wrap">
@@ -787,10 +799,10 @@ footer a { color:var(--muted); text-decoration:none; }
 
 <!-- FOOTER -->
 <footer>
-  <p>Designed & Built by <span>Vidit Parekh</span> &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Mason, Ohio &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#a7d7c6d5c2cccfd1cec3ced39591e7c0cac6cecb89c4c8ca"><span class="__cf_email__" data-cfemail="fc8c9d8e9997948a95989588cecabc9b919d9590d29f9391">[email&#160;protected]</span></a></p>
+  <p>Designed & Built by <span>Vidit Parekh</span> &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Mason, Ohio &nbsp;·&nbsp; <a href="mailto:parekhvidit26@gmail.com">parekhvidit26@gmail.com</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -869,21 +881,47 @@ footer a { color:var(--muted); text-decoration:none; }
     }
   });
 
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.07 });
+  // ── Scroll Reveal Animation ──
+  // Wait for full page load before setting up animations
+  function initAnimations() {
+    const targets = document.querySelectorAll(
+      '.skill-card, .proj-card, .tl-item, .research-card, .cert-card'
+    );
 
-  document.querySelectorAll('.skill-card, .proj-card, .tl-item, .research-card, .cert-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(26px)';
-    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease, border-color 0.25s, box-shadow 0.25s';
-    io.observe(el);
-  });
+    // Add base hidden state via CSS class (avoids FOUC)
+    targets.forEach((el, i) => {
+      el.classList.add('reveal-hidden');
+      // Stagger delay based on position among siblings
+      const siblings = el.parentElement.querySelectorAll('.reveal-hidden');
+      const idx = Array.from(siblings).indexOf(el);
+      el.style.transitionDelay = (idx * 0.07) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Small timeout ensures browser has painted the hidden state first
+          setTimeout(() => {
+            entry.target.classList.remove('reveal-hidden');
+            entry.target.classList.add('reveal-visible');
+          }, 10);
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px' // Trigger slightly before element enters viewport
+    });
+
+    targets.forEach(el => observer.observe(el));
+  }
+
+  // Run after everything is loaded
+  if (document.readyState === 'complete') {
+    initAnimations();
+  } else {
+    window.addEventListener('load', initAnimations);
+  }
 </script>
 </body>
 </html>
