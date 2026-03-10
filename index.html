@@ -203,6 +203,22 @@ footer a{color:var(--muted);text-decoration:none}
   nav{padding:1rem 4%}
   section{padding:4rem 4%}
 }
+
+/* MEDIUM ARTICLES */
+#medium{background:var(--surface)}
+.medium-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.4rem;max-width:1100px}
+.medium-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none}
+.medium-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00ab6c,#00d68f);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.medium-card:hover{transform:translateY(-5px);border-color:rgba(0,171,108,0.5);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.medium-card:hover::before{transform:scaleX(1)}
+.medium-tag{display:inline-flex;align-items:center;gap:0.4rem;padding:0.22rem 0.65rem;background:rgba(0,171,108,0.1);border:1px solid rgba(0,171,108,0.25);border-radius:100px;font-size:0.72rem;font-weight:600;color:#00d68f;margin-bottom:0.9rem;width:fit-content}
+.medium-year{font-size:0.72rem;color:var(--muted);font-style:italic;margin-bottom:0.6rem}
+.medium-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.75rem;line-height:1.42;flex:1}
+.medium-desc{font-size:0.86rem;color:var(--muted);line-height:1.72;margin-bottom:1.3rem}
+.medium-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:#00d68f;font-weight:500;margin-top:auto;transition:gap 0.2s}
+.medium-card:hover .medium-link{gap:0.6rem}
+.medium-profile{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.3rem;background:rgba(0,171,108,0.1);border:1px solid rgba(0,171,108,0.3);border-radius:8px;color:#00d68f;text-decoration:none;font-size:0.85rem;font-weight:500;margin-bottom:2.5rem;transition:all 0.2s}
+.medium-profile:hover{background:rgba(0,171,108,0.2);transform:translateY(-1px)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Vidit Parekh","jobTitle":"Machine Learning & AI Engineer","url":"https://vidit-parekh.github.io","email":"parekhvidit26@gmail.com","telephone":"+15132247361","address":{"@type":"PostalAddress","addressLocality":"Mason","addressRegion":"Ohio","addressCountry":"US"},"sameAs":["https://www.linkedin.com/in/vidit-parekh26","https://github.com/Vidit-Parekh","https://medium.com/@vidithardikparekh40"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Cincinnati"},{"@type":"CollegeOrUniversity","name":"Dwarkadas J. Sanghvi College of Engineering"}],"knowsAbout":["Machine Learning","Artificial Intelligence","Deep Learning","LLMs","RAG","Computer Vision","Python","PyTorch","TensorFlow","AWS","Data Science"]}
@@ -218,8 +234,9 @@ footer a{color:var(--muted);text-decoration:none}
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#research">Research</a></li>
+    <li><a href="#medium">Writing</a></li>
     <li><a href="#certificates">Certificates</a></li>
-    <li><a href="https://drive.google.com/file/d/1vZWAqgDAKWINtkjv_gNMlQairFckmEUY/view?usp=sharing" target="_blank" class="nav-resume">Resume</a></li>
+    <li><a href="https://drive.google.com/file/d/1vZWAqgDAKWINtkjv_gNMlQairFckmEUY/view?usp=drive_link" target="_blank" class="nav-resume">Resume</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -236,7 +253,7 @@ footer a{color:var(--muted);text-decoration:none}
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View My Work</a>
       <a href="#contact" class="btn-secondary">Get In Touch</a>
-      <a href="https://drive.google.com/file/d/1vZWAqgDAKWINtkjv_gNMlQairFckmEUY/view?usp=sharing" target="_blank" class="btn-resume">&#128196; View Resume</a>
+      <a href="https://drive.google.com/file/d/1vZWAqgDAKWINtkjv_gNMlQairFckmEUY/view?usp=drive_link" target="_blank" class="btn-resume">&#128196; View Resume</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">2&times;</div><div class="stat-label">Published Researcher</div></div>
@@ -371,20 +388,12 @@ footer a{color:var(--muted);text-decoration:none}
   <div class="projects-grid">
 
     <div class="proj-card">
-      <div class="proj-emoji">&#127974;</div>
-      <div class="proj-title">Credit Default Risk Modeling</div>
-      <div class="proj-desc">End-to-end credit default risk modeling system replicating real banking pipelines. Implemented WoE/IV feature engineering, statistical validation, and logistic regression with RF/XGBoost tuned via Optuna and explained with SHAP. Built a FICO-style credit scorecard and Monte Carlo portfolio risk simulator computing EL, VaR, and CVaR, deployed through an interactive Streamlit dashboard for real-time applicant scoring and portfolio analysis.</div>
-      <div class="proj-tech"><span class="ptag">Python</span><span class="ptag">Credit Risk Modeling</span><span class="ptag">WoE / IV</span><span class="ptag">statsmodels</span><span class="ptag">XGBoost</span><span class="ptag">Optuna</span><span class="ptag">SHAP</span><span class="ptag">Monte Carlo Simulation</span><span class="ptag">Streamlit</span></div>
-      <div class="proj-links"><a href="https://github.com/Vidit-Parekh/Elite-Credit-Default-Risk-Modeling" target="_blank" class="proj-link">&#8599; GitHub</a></div>
-    </div>
-
-    <div class="proj-card">
       <div class="proj-emoji">&#127973;</div>
       <div class="proj-title">ADHD Diet Recommendation System</div>
       <div class="proj-badges"><span class="badge badge-award" style="font-size:0.72rem;padding:0.2rem 0.55rem;">&#127949; Prakalp&rsquo;25 &mdash; 3rd Place</span></div>
       <div class="proj-desc">AI-powered personalized diet tool for ADHD patients using RAG, Vision Models, and BioBERT NER. Combined BM25 and semantic cross-encoder search for context-aware meal plans, achieving 90%+ clinical accuracy. Integrated LLaMA-3 Vision to generate structured 5-day meal plans with reduced hallucinations.</div>
       <div class="proj-tech"><span class="ptag">RAG</span><span class="ptag">LLaMA-3 Vision</span><span class="ptag">BioBERT</span><span class="ptag">BM25</span><span class="ptag">Python</span></div>
-      <div class="proj-links"><a href="https://www.linkedin.com/posts/vidit-parekh26_prakalp25-finalyearproject-adhdsupport-activity-7353400181360386050-lu07?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJKuosB7SbmNWmgG2PA8kAGNjlnm5y2urc" target="_blank" class="proj-link">&#8599; LinkedIn</a></div>
+      <div class="proj-links"><a href="https://github.com/Vidit-Parekh" target="_blank" class="proj-link">&#8599; GitHub</a></div>
     </div>
 
     <div class="proj-card">
@@ -395,6 +404,7 @@ footer a{color:var(--muted);text-decoration:none}
       <div class="proj-tech"><span class="ptag">ResNet50</span><span class="ptag">KNN</span><span class="ptag">PyTorch</span><span class="ptag">Computer Vision</span><span class="ptag">Python</span></div>
       <div class="proj-links">
         <a href="https://journal.esrgroups.org/jes/article/view/6776" target="_blank" class="proj-link">&#8599; Read Paper</a>
+        <a href="https://github.com/Vidit-Parekh" target="_blank" class="proj-link">&#8599; GitHub</a>
       </div>
     </div>
 
@@ -477,6 +487,89 @@ footer a{color:var(--muted);text-decoration:none}
 
   </div>
 </section>
+<div class="divider"></div>
+
+<section id="medium">
+  <div class="section-tag">Writing on Medium</div>
+  <h2 class="section-title">Articles &amp; Insights</h2>
+  <div class="section-line"></div>
+  <a href="https://medium.com/@vidithardikparekh40" target="_blank" class="medium-profile">&#9999; View All Articles on Medium &#8599;</a>
+  <div class="medium-grid">
+
+    <a href="https://medium.com/@vidithardikparekh40/mcp-multi-agent-systems-d68d4000bb82" target="_blank" class="medium-card">
+      <div class="medium-tag">&#129302; AI Agents</div>
+      <div class="medium-year">2026</div>
+      <div class="medium-title">MCP &amp; Multi-Agent Systems</div>
+      <div class="medium-desc">Explores the Model Context Protocol (MCP) and how it enables communication and coordination in multi-agent AI systems &mdash; covering architecture, benefits, and practical implications for building scalable AI agents.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/i-broke-my-llm-agent-three-times-before-i-understood-why-langgraph-exists-3bccbee09aa8" target="_blank" class="medium-card">
+      <div class="medium-tag">&#129302; LLM Systems</div>
+      <div class="medium-year">2026</div>
+      <div class="medium-title">I Broke My LLM Agent Three Times Before I Understood Why LangGraph Exists</div>
+      <div class="medium-desc">A practical reflection on building LLM agents and repeatedly hitting architectural walls. Breaks down how LangGraph solves agent workflow management, state handling, and orchestration for more reliable AI systems.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/building-my-cloud-data-pipeline-a-journey-through-azures-etl-ecosystem-b046dbdc5e91" target="_blank" class="medium-card">
+      <div class="medium-tag">&#9925; Data Engineering</div>
+      <div class="medium-year">2026</div>
+      <div class="medium-title">Building My Cloud Data Pipeline: A Journey Through Azure&rsquo;s ETL Ecosystem</div>
+      <div class="medium-desc">Documents designing and implementing a cloud-based ETL pipeline on Azure &mdash; exploring tools within Azure&rsquo;s data ecosystem and key lessons learned while building scalable, reliable data workflows.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/aws-vs-azure-whats-the-ideal-choice-34cd62c3f3ed" target="_blank" class="medium-card">
+      <div class="medium-tag">&#9729; Cloud</div>
+      <div class="medium-year">2026</div>
+      <div class="medium-title">AWS vs Azure: What&rsquo;s the Ideal Choice?</div>
+      <div class="medium-desc">A clear-eyed comparison of AWS and Microsoft Azure &mdash; analyzing their core strengths, service ecosystems, and ideal use cases to help developers and teams make informed cloud platform decisions.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/building-a-real-time-crop-monitoring-system-with-satellite-data-lessons-from-exploring-eos-ec25cea9b1ed" target="_blank" class="medium-card">
+      <div class="medium-tag">&#127757; Geospatial AI</div>
+      <div class="medium-year">2026</div>
+      <div class="medium-title">Building a Real-Time Crop Monitoring System with Satellite Data: Lessons from Exploring EOS</div>
+      <div class="medium-desc">Explores building a real-time crop monitoring system using satellite imagery and geospatial APIs &mdash; sharing hands-on insights from working with EOS tools for agricultural data analysis.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/building-a-cross-platform-digital-visiting-card-app-with-flutter-1f94a6e83231" target="_blank" class="medium-card">
+      <div class="medium-tag">&#128241; Mobile Dev</div>
+      <div class="medium-year">2026</div>
+      <div class="medium-title">Building a Cross-Platform Digital Visiting Card App with Flutter</div>
+      <div class="medium-desc">A walkthrough of developing a digital visiting card app in Flutter, featuring QR sharing, NFC exchange, and vCard export &mdash; designed for seamless modern digital networking.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/from-scripts-to-systems-what-building-a-personal-data-engineering-project-taught-me-e43069b654f3" target="_blank" class="medium-card">
+      <div class="medium-tag">&#9881; Data Engineering</div>
+      <div class="medium-year">2025</div>
+      <div class="medium-title">From Scripts to Systems: What Building a Personal Data Engineering Project Taught Me</div>
+      <div class="medium-desc">Reflects on the journey from writing small scripts to designing complete, production-grade data systems &mdash; covering system architecture, automation, and building reliable data engineering workflows.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/building-an-end-to-end-serverless-data-pipeline-on-aws-using-s3-glue-and-athena-a-practical-01825f60084c" target="_blank" class="medium-card">
+      <div class="medium-tag">&#9925; AWS</div>
+      <div class="medium-year">2025</div>
+      <div class="medium-title">Building an End-to-End Serverless Data Pipeline on AWS Using S3, Glue, and Athena</div>
+      <div class="medium-desc">A hands-on guide to building a fully serverless data pipeline on AWS &mdash; using S3, Glue, and Athena to ingest, transform, and query data at scale with minimal infrastructure overhead.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+    <a href="https://medium.com/@vidithardikparekh40/deploying-and-cost-optimizing-generative-ai-workloads-on-vast-ai-f29ff5a36f8a" target="_blank" class="medium-card">
+      <div class="medium-tag">&#129504; Generative AI</div>
+      <div class="medium-year">2025</div>
+      <div class="medium-title">Deploying and Cost-Optimizing Generative AI Workloads on Vast.ai</div>
+      <div class="medium-desc">Covers strategies for deploying generative AI workloads on Vast.ai while minimizing GPU costs &mdash; exploring infrastructure setup, performance tuning, and practical cost optimization techniques.</div>
+      <span class="medium-link">Read on Medium &#8599;</span>
+    </a>
+
+  </div>
+</section>
 
 <div class="divider"></div>
 
@@ -556,7 +649,7 @@ footer a{color:var(--muted);text-decoration:none}
         <a href="https://www.linkedin.com/in/vidit-parekh26" target="_blank" class="social-btn">&#128188; LinkedIn</a>
         <a href="https://medium.com/@vidithardikparekh40" target="_blank" class="social-btn">&#9999; Medium</a>
         <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#97;&#114;&#101;&#107;&#104;&#118;&#105;&#100;&#105;&#116;&#50;&#54;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" class="social-btn">&#128231; Email</a>
-        <a href="https://drive.google.com/file/d/1vZWAqgDAKWINtkjv_gNMlQairFckmEUY/view?usp=sharing" target="_blank" class="social-btn resume-btn">&#128196; Resume</a>
+        <a href="https://drive.google.com/file/d/1vZWAqgDAKWINtkjv_gNMlQairFckmEUY/view?usp=drive_link" target="_blank" class="social-btn resume-btn">&#128196; Resume</a>
       </div>
     </div>
     <div class="form-wrap">
@@ -652,7 +745,7 @@ contactForm.addEventListener('submit',async function(e){
 });
 
 function initAnimations(){
-  var targets=document.querySelectorAll('.skill-card,.proj-card,.tl-item,.research-card,.cert-card');
+  var targets=document.querySelectorAll('.skill-card,.proj-card,.tl-item,.research-card,.medium-card,.cert-card');
   targets.forEach(function(el){
     el.classList.add('reveal-hidden');
     var siblings=el.parentElement.querySelectorAll('.reveal-hidden');
@@ -681,4 +774,3 @@ if(document.readyState==='complete'){
 </script>
 </body>
 </html>
-
